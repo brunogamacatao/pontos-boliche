@@ -1,0 +1,35 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <form class="form-inline mt-2 mt-md-0" [formGroup]="pontosForm" (ngSubmit)="onSubmit()" novalidate>
+        <input class="form-control mr-sm-2" type="number" aria-label="Pontos" formControlName="pontos" [(ngModel)]="dados.pontos">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Registrar Pontos</button>
+      </form>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+  <div class="jumbotron">
+    <h3 class="text-center">Pontos: {{pontos}}</h3>
+  </div>
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Quadro</th>
+        <th>Jogada 1</th>
+        <th>Jogada 2</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let quadro of quadros; let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{quadro.jogadas[0]}}</td>
+        <td>{{quadro.jogadas[1]}}</td>
+        <td>{{quadro.getDescricao()}}</td>
+      </tr>
+    </tbody>
+  </table>
+</main>
